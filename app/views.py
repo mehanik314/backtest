@@ -15,7 +15,7 @@ def Projects_Data(request):
 
 def User_Data(request):
     data = request.GET.get('user_id')
-    return HttpResponse('id: ' + str(data))
+    return JsonResponse('id: ' + str(data))
 
 def Hello(request):
     return HttpResponse('Hello')
