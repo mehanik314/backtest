@@ -57,6 +57,14 @@ CORS_ORIGIN_WHITELIST = [
     "https://resilient-tarsier-b97d55.netlify.app/",
     "http://localhost:3000"
 ]
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
 ROOT_URLCONF = 'backcrm.urls'
 
 TEMPLATES = [
