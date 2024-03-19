@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = ["https://resilient-tarsier-b97d55.netlify.app/", "http://localhost:3000"]
+CORS_ALLOWED_ORIGINS = ["https://resilient-tarsier-b97d55.netlify.app", "http://localhost:3000"]
 
 
 ROOT_URLCONF = 'backcrm.urls'
