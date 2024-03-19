@@ -5,13 +5,12 @@ class User(models.Model):
     user_id = models.IntegerField()
     first_name = models.CharField(max_length=100)
     def __str__(self):
-        return self.user_id
+        return self.first_name
     
     
 class Projects(models.Model):
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
     title = models.CharField(max_length=50)
-    desc = models.CharField(max_length=100)
+    user_id = models.ForeignKey(User, on_delete = models.CASCADE)
     def __str__(self):
         return self.title
     

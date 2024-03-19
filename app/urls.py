@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path('mymodels/', views.User_Data, name="Data"),
+    path('projects/', views.Projects_Data, name="Data"),
 
 ]
