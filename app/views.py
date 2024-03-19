@@ -7,7 +7,7 @@ from .models import User
 
 
 try:
-    db = sqlite3.connect('db.db')
+    db = sqlite3.connect('db.sqlite3')
     cursor = db.cursor()
     print("Подключен к SQLite")
 
