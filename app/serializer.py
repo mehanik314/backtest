@@ -1,8 +1,11 @@
 from rest_framework import serializers
-
+from .models import User
+from .models import Projects
+from .models import Task
 class UserSerializer(serializers.Serializer):
-    user_id = serializers.IntegerField()
-    first_name = serializers.CharField(max_length=100)
+    class Meta:
+        model = User
+        fields = ['id', 'user_id', 'first_name']
     
 class ProjectsSerializer(serializers.Serializer):
     user = serializers.IntegerField()
