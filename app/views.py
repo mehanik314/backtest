@@ -1,15 +1,10 @@
-from django.shortcuts import render
-from django.http import JsonResponse
-from django.http import HttpResponse
-from django.views.decorators.http import require_GET
-from rest_framework.decorators import api_view, renderer_classes
+from django.http import JsonResponse,HttpResponse
+from django.views.decorators.http import require_GET, require_POST
 from django.core.exceptions import ObjectDoesNotExist
-import sqlite3
-from .models import Projects
-from .models import User
-from .serializer import UserSerializer
-from .serializer import ProjectsSerializer
-from .serializer import TaskSerializer
+from .models import Projects,User,Task
+from .serializer import UserSerializer,ProjectsSerializer,TaskSerializer
+
+
 def get_user_data(user_id):
     try:
         user = User.objects.get(user_id=user_id)
@@ -82,5 +77,23 @@ def User_Data(request):
         return JsonResponse(serializer.data, safe=False)
     
 @require_GET
-def Hello(request):
+def Get_Tasks(request):
+    id_project = request.GET.get('project_id')
+    if not id_project:
+        return JsonResponse({'error': 'Error retrieving project'}, status=500)
+    else:
+        Tasks = Task.objects.filter(project = id_project)
+        if not Tasks:
+            return JsonResponse({'error': 'нету тасок'}, status=500)
+        serializer = TaskSerializer(Tasks, many = True)
+        return JsonResponse(serializer.data, safe=False)
+
+@require_POST
+def Create_Task(request):
+    
+    
+    return HttpResponse('Hello')
+
+
+def Put_Task(request):
     return HttpResponse('Hello')

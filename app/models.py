@@ -18,7 +18,7 @@ class Task(models.Model):
     title = models.CharField(max_length=50)
     desc = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
-    date = models.DateField(auto_now=True)
+    date = models.DateField(auto_now_add=True)
     status = models.CharField(max_length = 50)
     project = models.ForeignKey(Projects, on_delete = models.CASCADE)
     def __str__(self):
