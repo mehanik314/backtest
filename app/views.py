@@ -2,6 +2,7 @@ from django.http import JsonResponse,HttpResponse
 from django.views.decorators.http import require_GET, require_POST
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Projects,User,Task
+import json
 from .serializer import UserSerializer,ProjectsSerializer,TaskSerializer
 
 
@@ -88,10 +89,16 @@ def Get_Tasks(request):
         serializer = TaskSerializer(Tasks, many = True)
         return JsonResponse(serializer.data, safe=False)
 
+
+def Put_Tasks(request):
+    return JsonResponse(serializer.data, safe=False)
+
 @require_POST
 def Create_Task(request):
-    
-    
+    if request.method == 'POST':
+        body_unicode = request.body.decode('utf-8')
+        data = json.loads(body_unicode)
+        name = data.get('name')
     return HttpResponse('Hello')
 
 
